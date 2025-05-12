@@ -4,7 +4,7 @@
 #include <IRutils.h>
 
 const uint16_t kRecvPin = 12;  // 接收腳位
-IRrecv irrecv(kRecvPin);
+IRrecv irrecv(kRecvPin, 2048);
 decode_results results;
 
 const int TICK_DURATION = 50;  // 每個 tick 是 50 微秒
@@ -20,6 +20,10 @@ void loop() {
   if (irrecv.decode(&results)) {
     delay(200);  // 增加延遲時間，讓接收器不會在同一時間接收到太多訊號
     if (results.rawlen >= 100) {
+      Serial.print("===>");
+      Serial.println(results.rawlen);
+      Serial.println(results.overflow);
+      Serial.println(results.repeat);
       Serial.println("✅ 成功接收訊號");
       
       // 顯示解碼結果

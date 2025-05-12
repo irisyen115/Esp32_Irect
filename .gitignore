@@ -1,0 +1,13 @@
+# Ignore build artifacts
+/build/
+/*.elf
+/*.bin
+/*.map
+
+# VS Code or Theia config files (optional)
+.theia/
+debug.cfg
+debug_custom.json
+
+# SVD files (if generated)
+/*.svd
